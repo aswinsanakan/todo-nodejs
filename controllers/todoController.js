@@ -12,7 +12,7 @@ module.exports = (app) => {
   // Create todo
   app.post('/todo', urlencodedParser, function(req,res){
     data.push(req.body);
-    res.render('todo', {todos: data});
+    res.json(data);
   });
 
   // Delete a todo
@@ -20,6 +20,6 @@ module.exports = (app) => {
     data = data.filter((todo) => {
       return (todo.item.replace(/ /g, '') !== req.params.item);
     });
-    res.render('todo', {todos: data});
+    res.json(data);
   });
 };
